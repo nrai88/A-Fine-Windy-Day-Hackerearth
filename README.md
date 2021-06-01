@@ -13,11 +13,7 @@ DATA EXPLORATION
 
 The training dataset consists of 28200 rows and 22 columns, 21 of the which are the features and 1 is the target column namely, ‘windmill_generated_power(kW/h)’, to predict which, the model has to be built.
 
-The test dataset consists of 12086 rows and 21 columns. Therefore, the model is supposed to predict the value of ‘windmill_generated_power(kW/h)’ in the said 12086 scenarios(or rows).
-
-	On initial analysis of the training data, it was observed that all columns apart from tracking_id, datetime, area_temperature(°C) and blade_breadth(m) have missing values. The most surprising part was that even the target variable i.e. ‘windmill_generated_power(kW/h)’ had 207 missing values.
-
-	On further analysis of the training data, it was observed that there are values of -99, -999, 999 and -30 which appeared like missing values. Hence, these were also treated as missing values while reading the dataset for analysis and model building.
+On initial analysis of the training data, it was observed that all columns apart from tracking_id, datetime, area_temperature(°C) and blade_breadth(m) have missing values. The most surprising part was that even the target variable i.e. ‘windmill_generated_power(kW/h)’ had 207 missing values. On further analysis of the training data, it was observed that there are values of -99, -999, 999 and -30 which appeared like missing values. Hence, these were also treated as missing values while reading the dataset for analysis and model building.
 
 FEATURE ENGINEERING
 
@@ -38,8 +34,8 @@ As it was observed that there are outliers in the data, data points lying outsid
 
 FURTHER FEATURE ENGINEERING BY AGGREGATIONS
 
-	The hypothesis was that aggregating the numerical features against the categorical features would definitely give better features and yield better scores as the power generated depends on the environment over a period of time and not just that particular instant. Therefore, the features generated using datetime were also considered as categorial and aggregations namely, count, mean, median, minimum, maximum, standard deviation and skew. Aggregations were also done at Hour of the day and Day of the Year level. This resulted in a total of 1096 features.
+The hypothesis was that aggregating the numerical features against the categorical features would definitely give better features and yield better scores as the power generated depends on the environment over a period of time and not just that particular instant. Therefore, the features generated using datetime were also considered as categorial and aggregations namely, count, mean, median, minimum, maximum, standard deviation and skew. Aggregations were also done at Hour of the day and Day of the Year level. This resulted in a total of 1096 features.
 
 MODEL BUILDING WITH NEW FEATURES
 
-	Now with a total of 1096 features, the model building process was repeated i.e. a 20 fold validation resulting in 20 catboost models and later ensembling the 20 predictions in a weighted mean fashion based on the local CV. The local CV was 97.62537 and on submission the private leaderboard score was 98.02289.
+Now with a total of 1096 features, the model building process was repeated i.e. a 20 fold validation resulting in 20 catboost models and later ensembling the 20 predictions in a weighted mean fashion based on the local CV. The local CV was 97.62537 and on submission the private leaderboard score was 98.02289.
