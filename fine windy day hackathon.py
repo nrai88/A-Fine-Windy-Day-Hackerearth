@@ -5,10 +5,6 @@ from catboost import CatBoostRegressor
 import numpy as np
 from sklearn.model_selection import KFold
 
-
-os.getcwd()
-os.chdir('Documents\Analytics\Fine Windy Day Hackerearth')
-
 #reading the dataset, -99,999,-999,-30 have been treated as missing values
 train=pd.read_csv('Data/train.csv',na_values=[-99,999,-999,-30])
 test=pd.read_csv('Data/test.csv',na_values=[-99,999,-999,-30])
